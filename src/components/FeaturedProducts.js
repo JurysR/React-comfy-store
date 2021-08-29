@@ -12,6 +12,7 @@ const FeaturedProducts = () => {
     products_error: error,
     featured_products: featured,
   } = useProductsContext();
+
   if (loading) {
     return <Loading />;
   }
@@ -25,14 +26,14 @@ const FeaturedProducts = () => {
         <h2>featured products</h2>
         <div className='underline'></div>
       </div>
-      <div className='section-center featured'>
-        {featured.slice(0, 3).map((product) => {
-          return <Product key={product.id} {...product} />;
-        })}
-      </div>
-      <Link to='/products' className='btn'>
-        all products
+      <Link to='/products'>
+        <div className='section-center featured'>
+          {featured.slice(0, 3).map((product) => {
+            return <Product key={product.id} {...product} />;
+          })}
+        </div>
       </Link>
+      <div className='btn'>all products</div>
     </Wrapper>
   );
 };
